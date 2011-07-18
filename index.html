@@ -27,6 +27,8 @@
   THE SOFTWARE.
   -->
   <head>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans&v2|Open+Sans+Condensed:300&v2' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&v2' rel='stylesheet' type='text/css'>
     <meta charset="utf-8">
     <title>{block:PostTitle}{PostTitle} – {/block:PostTitle}{Title}</title>
     <meta name="description" content="{MetaDescription}">
@@ -37,22 +39,16 @@
     <meta name="Last-Modified" content="{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero} {24HourWithZero}:{Minutes}:{Seconds} +0100">
     {/block:Posts}
     {/block:Permalink}
-    <link rel="shortcut icon" href="http://static.tumblr.com/9njdies/Crol8jema/signature.png">
+   <link rel="shortcut icon" href="{Favicon}"/>
     <link rel="alternate" type="application/rss+xml" href="{RSS}">
     <style type="text/css">
-      @font-face {
-        font-family: 'M+ 1m';
-        font-style: normal;
-        font-weight: 300;
-        src: local('M+ 1m light'), local('mplus-1m-light'),
-             url('http://hunch.se/style/fonts/mplus-1m-light.ttf') 
-             format('truetype');
-      }
+
+
       /* Base */
       * { margin:0; padding:0; font-family:inherit; }
       body {
         background:white; color:#030303;
-        font:13px 'M+ 1m', georgia, serif;
+        font:13px 'Open Sans', georgia, serif;
         line-height:1.4;
         font-weight: lighter;
         margin: 0 auto;
@@ -65,8 +61,8 @@
       hr { height:1px; border:none; background-color:#ddd; }
 
       h1,h2,h3,h4 {
-        font-family: 'Helvetica Neue', helvetica, sans-serif;
-        color:#333;
+        font-family: 'Open Sans Condensed', helvetica, sans-serif;
+		color:#333;
         margin: 1.618em 0 1em 0;
         -webkit-font-smoothing: antialiased;
         text-rendering: optimizelegibility;
@@ -106,13 +102,8 @@
       }
         #head h1 { font-size: 2em; margin:0; }
           #head h1 a {
-            display:block;
-            background: 
-                url(http://static.tumblr.com/9njdies/Crol8jema/signature.png)
-                no-repeat scroll top left;
-            width: 81px;
-            height: 31px;
-            margin-left:-2px;
+        	margin: 0px 0px 0px -2px;
+        	}
           }
             #head h1 a span { display:none; }
         #head p.description {
@@ -406,7 +397,7 @@
     <div id="head">
       <ul class="navigation">
         {block:Pages}<li><a href="{URL}">{Label}</a></li>{/block:Pages}
-        <li><a href="http://hunch.se/">About me</a></li>
+        <li><a href="http://robertomateu.com/">About me</a></li>
       </ul>
       <h1><a href="/" title="{Title}"><span>{Title}</span></a></h1>
       <p class="description">{Description}</p>
@@ -458,7 +449,7 @@
       {block:Link}
       <div class="post">
         <div class="body">
-          <p><a href="{URL}" class="link-title" {Target}>{Name}</a><p>{block:Description}   {Description} {/block:Description}</p>
+          <p><a href="{URL}" class="link-title" {Target}>{Name} →</a><p>{block:Description}   {Description} {/block:Description}</p>
         </div>
         <div class="meta">
           {block:RebloggedFrom}<p class="item reblogged small"><a href="{ReblogParentURL}">{ReblogParentTitle}</a></span>{/block:RebloggedFrom}
@@ -544,60 +535,7 @@
 
 {block:PostNotes}<div id="notes"><div class="left-margin-icon">&nbsp;</div>{PostNotes}</div>{/block:PostNotes}
 
-<!-- start disqus -->
-<script type="text/javascript">
-  // Disqus setup -- either remove everything between <!-- start disqus --> and
-  // <!-- end disqus --> OR follow the two steps below:
-  //
-  // Step 1: Enter your Disqus forum "short name":
-  var disqus_shortname = 'your-disqus-short-name-here';
-  // Step 2: Remove the following block ("if"..."}")
-  if (document.location.protocol !== 'file:' &&
-      document.location.hostname !== 'blog.hunch.se') {
-    alert('You need to set your Disqus short name in the variable' +
-          'disqus_shortname (or disable Disqus)');
-  }
-  var disqus_url = "{Permalink}";
-  var disqus_title ="{block:PostTitle}{PostTitle}{/block:PostTitle}";
-  loadScriptAsync('http://disqus.com/forums/'+disqus_shortname+'/count.js');
-  (function(){
-  // this hack takes care of formatting # comments
-  var v = document.getElementsByClassName('dsq-comment-count');
-  var loaded = false;
-  var polle;
-  for (var i=0;i<v.length;i++) {
-    var e = v.item(i);
-    if (e.firstChild.nodeValue === '-') {
-      polle = e.firstChild;
-      break;
-    }
-  }
-  function onload() {
-    for (var i=0;i<v.length;i++) {
-      var e = v.item(i);
-      if (e.firstChild.nodeValue !== '0 and 0') {
-        var m = e.firstChild.nodeValue.split(' ');
-        e.firstChild.nodeValue = String(parseInt(m[0]) + parseInt(m[2]));
-        e.style.display = 'inline';
-      }
-    }
-  }
-  if (polle) {
-    var timer = setInterval(function(){
-      if (polle.nodeValue !== '-') { clearInterval(timer); onload(); }
-    },100);
-  }
-  })();
-</script>
-{block:Permalink}
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-  var disqus_identifier = "{PostID}";
-  loadScriptAsync('http://'+disqus_shortname+'.disqus.com/embed.js');
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=hunch">comments powered by Disqus.</a></noscript>
-{/block:Permalink}
-<!-- end disqus -->
+
 
       <div id="pagenav">
         <div class="inside">
@@ -611,10 +549,10 @@
       </div>
 
       <div id="footer">
-        Copyright &copy; <a href="http://hunch.se/">Rasmus Andersson</a> —
+        Copyright &copy; <a href="http://robertomateu.com/">Roberto Mateu</a> —
         Original work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/2.5/">Creative Commons Attribution-Share Alike license</a>.
         Access <a href="/archive">the archive</a> to find older posts.
-        This blog is hosted by <a href="http://www.tumblr.com/">Tumblr</a>.
+        This blog is hosted by <a href="http://www.tumblr.com/">Tumblr</a> and original theme by <a href="http://hunch.se/">Rasmus Andersson</a>.
       </div>
     </div><!-- #main -->
     <script>
@@ -647,104 +585,14 @@
       }
       
       {block:PostTitle}
-      // take care of 404
-      function on404() {
-        var body, divs = first_post.getElementsByTagName('div');
-        for (var i=0;i<divs.length;i++) {
-          if (divs.item(i).className === 'body') {
-            window.on404_post_body = divs.item(i);
-            body = window.on404_post_body;
-            break;
-          }
-        }
-        if (body) {
-          var not_found_p = body.getElementsByTagName('p').item(0);
-          not_found_p.style.display = 'none';
-          var p = document.createElement('p');
-          p.className = 'redirect-message';
-          p.appendChild(document.createTextNode('Looking up new location...'));
-          body.appendChild(p);
-          window.on404_redirect_match = function(info) {
-            body.removeChild(p);
-          };
-          window.on404_redirect_nomatch = function() {
-            body.removeChild(p);
-            not_found_p.style.display = 'block';
-            body.className += ' not-found';
-            // search, baby
-            window.on404_search_results = function(rsp) {
-              if (!rsp || !rsp.posts || rsp.posts.length == 0)
-                return;
-              var a, s, li, post, title, ol = document.createElement('ol');
-              ol.className = 'search-results';
-              not_found_p.innerHTML =
-                  'The URL you requested could not be found, but here are some'+
-                  ' suggestions:';
-              for (var i=0;i<rsp.posts.length;i++) {
-                post = rsp.posts[i];
-                li = document.createElement('li');
-                a = document.createElement('a');
-                a.href = post['url-with-slug'];
-                title = post['regular-title'];
-                if (!title)
-                  title = post.type + ' ('+post.slug.replace(/[-_]+/g, ' ')+')';
-                a.appendChild(document.createTextNode(title));
-                li.appendChild(a);
 
-                s = document.createElement('span');
-                s.className = 'date';
-                s.appendChild(document.createTextNode(post.date));
-                li.appendChild(s);
 
-                if (post['regular-body']) {
-                  s = document.createElement('p');
-                  s.className = 'text-body-overlay';
-                  s.innerHTML = '&nbsp;';
-                  li.appendChild(s);
-                  s = document.createElement('p');
-                  s.className = 'text-body';
-                  s.appendChild(document.createTextNode(post['regular-body']));
-                  li.appendChild(s);
-                }
-
-                ol.appendChild(li);
-              }
-              body.appendChild(ol);
-            }
-            var q = document.location.pathname.replace(/[\/_-]+/g, '+');
-            loadScriptAsync(
-                '/search/'+q+'/json?callback=on404_search_results&filter=text');
-          };
-        }
-        // This script will cause a redirect if the URL requested has moved.
-        // Probably only interesting if you are me, and not you... ehh.
-        // Comment-out or remove the following to disable redirection
-        loadScriptAsync(
-            'http://hunch.se/stuff/hunch-digest-blog-archive/path-redirect.js');
-      }
-      if (first_post) {
-        var h1s = first_post.getElementsByTagName('h1');
-        outer_loop:
-        for (var i=0;i<h1s.length; i++) {
-          var e = h1s.item(i);
-          if (e.className === 'title') {
-            for (var x=0,cn2=e.childNodes;x<cn2.length; x++) {
-              var e2 = cn2.item(x);
-              if (e2.nodeName === 'A' && e2.getAttribute('href') === '') {
-                on404(e);
-                break outer_loop;
-              }
-            }
-          }
-        }
-      }
-      {/block:PostTitle}
 
     })();
     </script>
     <script type="text/javascript">
       var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-9078556-2']);
+      _gaq.push(['_setAccount', 'UA-133147-4']);
       _gaq.push(['_trackPageview']);
       (function() {
         var ga = document.createElement('script');
